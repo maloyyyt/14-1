@@ -33,6 +33,23 @@ class Product:
             return self.price * self.quantity + other.price * other.quantity
         raise TypeError("Операнд должен быть экземпляром класса Product")
 
+class Smartphone(Product):
+    def __init__(self, name, description, price, quantity,
+                 efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity,
+                 country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
 class Category:
     category_count = 0
     product_count = 0
@@ -56,4 +73,4 @@ class Category:
         return "\n".join(str(product) for product in self.__products)
 
     def __str__(self):
-        return f"{self.name}, количество продуктов: {Category.product_count} шт."
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
